@@ -2,11 +2,22 @@
 #define FLIGHT_TRACKER_H
 
 #include <ArduinoJson.h>
-//#include <WiFiClient.h>
 #include <HTTPClient.h>
 #include <limits>
 #include <math.h>
 
+//#define DEBUG 1
+#ifdef DEBUG
+#define DEBUG_PRINT(x) Serial.print(x)
+#define DEBUG_PRINTDEC(x, DEC) Serial.print(x, DEC)
+#define DEBUG_PRINTLN(x) Serial.println(x)
+#define DEBUG_PRINTLNDEC(x, DEC) Serial.println(x, DEC)
+#else
+#define DEBUG_PRINT(x)
+#define DEBUG_PRINTDEC(x, DEC)
+#define DEBUG_PRINTLN(x)
+#define DEBUG_PRINTLNDEC(x, DEC)
+#endif
 
 const char* host = "192.168.1.99"; // Flight data source
 const char* path = "/data/aircraft.json";
